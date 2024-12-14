@@ -1,10 +1,43 @@
 let wordForm = document.querySelector(".wordForm");
 let formType = ["Games", "Programming", "Anime", "Countries"];
-let games = ["Mine Craft", "DBD", "FIFA"];
-let anime = ["naruto", "black clover", "jojo"];
-let programming = ["php", "css", "js", "go", "laravel", "react",'angular','rust','c'
+let games = [
+  "Mine Craft",
+  "DBD",
+  "FIFA",
+  "gta",
+  "pubg",
+  "mario",
+  "overwatch",
+  "gang beast",
+  "skiro",
+  "dark souls",
 ];
-let countries = ["oman", "yamen", "USA", "UK","Irland"];
+let anime = ["naruto", "black clover", "jojo","death note",'demon slayer',"one Piece","bleach"];
+let programming = [
+  "php",
+  "css",
+  "js",
+  "go",
+  "laravel",
+  "react",
+  "angular",
+  "rust",
+  "c",
+];
+let countries = [
+  "oman",
+  "yamen",
+  "USA",
+  "UK",
+  "Irland",
+  "germany",
+  "france",
+  "italy",
+  "japan",
+  "china",
+  "spain",
+  "canada",
+];
 
 function rand(arr) {
   let rand = new Set();
@@ -53,11 +86,10 @@ function main() {
     let userInput = document.querySelector(".userInput");
     for (let i in chosenWord) {
       if (chosenWord[i] == " ") {
-        
         let div = document.createElement("div");
         div.style.position = "relative";
         let span = document.createElement("span");
-        div.textContent = ' '
+        div.textContent = " ";
         span.style.cssText =
           "background-color:black;width:80%;height:3px; position:absolute; bottom:50%;transform:translatey(50%)";
         div.append(span);
@@ -81,8 +113,8 @@ function main() {
       let chosenUpper = chosenWord.toUpperCase();
       let textUpper = e.target.textContent.toUpperCase();
       if (chosenUpper.indexOf(textUpper) !== -1) {
-        const winAudio = new Audio('../win.wav')
-        winAudio.play()
+        const winAudio = new Audio("../win.wav");
+        winAudio.play();
         let positions = [];
         [...chosenUpper].forEach(function (el, index) {
           if (el === textUpper) {
@@ -97,7 +129,6 @@ function main() {
         let points = 0;
         for (let i in chosenWord) {
           if (document.querySelector(`.box${i}`).textContent) {
-            
             points += 1;
           }
           if (points === chosenWord.length) {
@@ -109,8 +140,8 @@ function main() {
         el.style.backgroundColor = "#eee";
         el.removeEventListener("click", a);
       } else {
-        const loseAudio = new Audio('../lose.wav')
-        loseAudio.play()
+        const loseAudio = new Audio("../lose.wav");
+        loseAudio.play();
         // loseSound.currentTime = 0;
         // loseSound.play()
 
@@ -155,8 +186,7 @@ let winLose = document.querySelector(".win-lose");
 let reset = document.querySelector(".reset");
 let theWord = document.querySelector(".word");
 reset.onclick = function () {
-    window.location.reload();
-
+  window.location.reload();
 };
 main();
 // function* levels() {
