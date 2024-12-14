@@ -81,6 +81,8 @@ function main() {
       let chosenUpper = chosenWord.toUpperCase();
       let textUpper = e.target.textContent.toUpperCase();
       if (chosenUpper.indexOf(textUpper) !== -1) {
+        const winAudio = new Audio('../win.wav')
+        winAudio.play()
         let positions = [];
         [...chosenUpper].forEach(function (el, index) {
           if (el === textUpper) {
@@ -95,6 +97,7 @@ function main() {
         let points = 0;
         for (let i in chosenWord) {
           if (document.querySelector(`.box${i}`).textContent) {
+            
             points += 1;
           }
           if (points === chosenWord.length) {
@@ -106,6 +109,11 @@ function main() {
         el.style.backgroundColor = "#eee";
         el.removeEventListener("click", a);
       } else {
+        const loseAudio = new Audio('../lose.wav')
+        loseAudio.play()
+        // loseSound.currentTime = 0;
+        // loseSound.play()
+
         if (mistakes.next().done === true) {
           end.style.cssText = "visibility: visible;opacity:1;";
           winLose.textContent = "You Lose";
@@ -141,6 +149,7 @@ function* genMistakes() {
   div3.append(div4);
   yield 5;
 }
+
 let end = document.querySelector(".end");
 let winLose = document.querySelector(".win-lose");
 let reset = document.querySelector(".reset");
