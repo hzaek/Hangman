@@ -267,7 +267,7 @@ header {
 /* tries Mistakes */
 
 .end{
-    position: absolute;
+    position: fixed;
     width: 100vw;
     height: 100svh;
     background-color: rgba(0, 0, 0, 0.3);
@@ -288,7 +288,7 @@ header {
     right: 50%;
 
     padding: 15px;
-    
+
     font-size: 30px;
     color: white;
 }
@@ -308,3 +308,4 @@ header {
     font-size: 30px;
     color: white;
 }
+

@@ -2,8 +2,9 @@ let wordForm = document.querySelector(".wordForm");
 let formType = ["Games", "Programming", "Anime", "Countries"];
 let games = ["Mine Craft", "DBD", "FIFA"];
 let anime = ["naruto", "black clover", "jojo"];
-let programming = ["php", "css", "js", "go", "laravel", "react"];
-let countries = ["oman", "yamen", "USA"];
+let programming = ["php", "css", "js", "go", "laravel", "react",'angular','rust','c'
+];
+let countries = ["oman", "yamen", "USA", "UK","Irland"];
 
 function rand(arr) {
   let rand = new Set();
@@ -23,23 +24,25 @@ let storeAnime = rand(anime);
 let storeProgramming = rand(programming);
 let storeCountries = rand(countries);
 wordForm.textContent = `Word Form: ${storeForm[0]}`;
-
+let changerF = 0;
+let changerW = 0;
 function main() {
   let mistakes = genMistakes();
-  let chosenForm = storeForm[0];
+  let chosenForm = storeForm[changerF];
+
   let chosenWord;
   switch (chosenForm) {
     case "Games":
-      chosenWord = storeGames[0];
+      chosenWord = storeGames[changerW];
       break;
     case "Programming":
-      chosenWord = storeProgramming[0];
+      chosenWord = storeProgramming[changerW];
       break;
     case "Anime":
-      chosenWord = storeAnime[0];
+      chosenWord = storeAnime[changerW];
       break;
     case "Countries":
-      chosenWord = storeCountries[0];
+      chosenWord = storeCountries[changerW];
       break;
     default:
       console.error("chekc arrays");
@@ -50,9 +53,11 @@ function main() {
     let userInput = document.querySelector(".userInput");
     for (let i in chosenWord) {
       if (chosenWord[i] == " ") {
+        
         let div = document.createElement("div");
         div.style.position = "relative";
         let span = document.createElement("span");
+        div.textContent = ' '
         span.style.cssText =
           "background-color:black;width:80%;height:3px; position:absolute; bottom:50%;transform:translatey(50%)";
         div.append(span);
@@ -76,7 +81,6 @@ function main() {
       let chosenUpper = chosenWord.toUpperCase();
       let textUpper = e.target.textContent.toUpperCase();
       if (chosenUpper.indexOf(textUpper) !== -1) {
-        
         let positions = [];
         [...chosenUpper].forEach(function (el, index) {
           if (el === textUpper) {
@@ -87,17 +91,16 @@ function main() {
           let div = document.querySelector(`.box${i}`);
           div.append(textUpper);
         }
-        
+
         let points = 0;
-        for (let i in chosenWord){
-           if (document.querySelector(`.box${i}`).textContent){
-            points+=1
-           }
-           if(points === chosenWord.length){
+        for (let i in chosenWord) {
+          if (document.querySelector(`.box${i}`).textContent) {
+            points += 1;
+          }
+          if (points === chosenWord.length) {
             end.style.cssText = "visibility: visible;opacity:1;";
-            theWord.textContent = `The Word is ${chosenWord.toUpperCase()}`
-            
-           }
+            theWord.textContent = `The Word is ${chosenWord.toUpperCase()}`;
+          }
         }
 
         el.style.backgroundColor = "#eee";
@@ -107,7 +110,7 @@ function main() {
           end.style.cssText = "visibility: visible;opacity:1;";
           winLose.textContent = "You Lose";
           winLose.style.cssText = "background-color:var(--red-color)";
-          theWord.textContent = `The Word is ${chosenWord.toUpperCase()}`
+          theWord.textContent = `The Word is ${chosenWord.toUpperCase()}`;
         }
         el.style.backgroundColor = "var(--red-color)";
         el.removeEventListener("click", a);
@@ -141,9 +144,10 @@ function* genMistakes() {
 let end = document.querySelector(".end");
 let winLose = document.querySelector(".win-lose");
 let reset = document.querySelector(".reset");
-let theWord = document.querySelector('.word')
+let theWord = document.querySelector(".word");
 reset.onclick = function () {
-  window.location.reload();
+    window.location.reload();
+
 };
 main();
 // function* levels() {
@@ -151,5 +155,3 @@ main();
 //   storeForm = randForm()
 //   yield 2;
 // }
-
-
