@@ -57,6 +57,7 @@ function main() {
           "background-color:black;width:80%;height:3px; position:absolute; bottom:50%;transform:translatey(50%)";
         div.append(span);
         userInput.append(div);
+        div.className = `box${i}`;
         continue;
       }
 
@@ -94,6 +95,8 @@ function main() {
            }
            if(points === chosenWord.length){
             end.style.cssText = "visibility: visible;opacity:1;";
+            theWord.textContent = `The Word is ${chosenWord.toUpperCase()}`
+            
            }
         }
 
@@ -104,6 +107,7 @@ function main() {
           end.style.cssText = "visibility: visible;opacity:1;";
           winLose.textContent = "You Lose";
           winLose.style.cssText = "background-color:var(--red-color)";
+          theWord.textContent = `The Word is ${chosenWord.toUpperCase()}`
         }
         el.style.backgroundColor = "var(--red-color)";
         el.removeEventListener("click", a);
@@ -137,6 +141,7 @@ function* genMistakes() {
 let end = document.querySelector(".end");
 let winLose = document.querySelector(".win-lose");
 let reset = document.querySelector(".reset");
+let theWord = document.querySelector('.word')
 reset.onclick = function () {
   window.location.reload();
 };
